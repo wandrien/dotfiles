@@ -2,7 +2,7 @@
 regexp=^[A-Z\s%]*([A-Z]{3})[A-Z\s%]*$
 colours=underline
 =======
-# Capd Line
+# Caps Line
 regexp=^([A-Z][-a-z0-9]+(\s+|$)){3,}$
 colours=underline
 =======
@@ -67,7 +67,7 @@ regexp=(?<=[-bcCdDlMnpPs?][-r][-w][-xsStT][-r][-w][-xsStT])(-|(r))(-|(w))(-|([xs
 colours=unchanged,unchanged,bold red,unchanged,bold red,unchanged,bold red
 =======
 # root
-regexp=root|wheel(?=\s|$)
+regexp=(root|wheel)(?=\s|$)
 colours=red
 =======
 # Linux bla n.n.n-bla
@@ -77,6 +77,10 @@ colours=red
 # /dev/sda
 regexp=(\s|^)(/dev/)?[hs]d[a-f][0-9]*(?=[^\w\d]|$)
 colours=red
+=======
+# /dev/mapper/somedevice
+regexp=(\s|^)/dev/mapper/[-\w\d]+
+colours=green
 =======
 # pts
 regexp=(\s|^)pts/\d+(?=[^\w\d]|$)
