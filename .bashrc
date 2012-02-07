@@ -201,20 +201,21 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Colorize output with grc
 
-#if [[ -f /usr/bin/grc ]] ; then
-#  alias grca="grc --colour=auto"
+if [[ -f /usr/bin/grc ]] ; then
 
-#  for c in ping traceroute make diff last cvs netstat ifconfig uptime vmstat iostat df mount uname ps route lsmod whereis ; do
-#    C="`alias ${c} 2>/dev/null`"
-#    if [[ -z "$C" ]] ; then
-#        C="${c}"
-#    fi
-#    alias ${c}="grca ${C}"
-#  done
+  alias grca="grc --colour=auto"
 
-#  alias ll="grca ls --color=force -lh"
-#  alias ccal="grca cal"
-#fi
+  for c in ping traceroute make diff last cvs netstat ifconfig uptime vmstat iostat df mount uname ps route lsmod whereis ; do
+    C="`alias ${c} 2>/dev/null`"
+    if [[ -z "$C" ]] ; then
+        C="${c}"
+    fi
+    alias ${c}="grca ${C}"
+  done
+
+  alias ll="grca ls --color=force -lh"
+  alias ccal="grca cal"
+fi
 
 #####################################################################
 
