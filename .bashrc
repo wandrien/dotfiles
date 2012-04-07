@@ -126,7 +126,7 @@ alias xclipis="tee `tty` | xclip"
 #alias _fm='exec_first_of -e GUI_FILEMANAGERS'
 #alias _ed='exec_first_of -e GUI_EDITORS'
 
-alias sgrep="grep -r -n --exclude-dir=.svn --exclude-dir=.git --exclude=*.[oa] --exclude=*.so"
+alias sgrep="grep -r -n --exclude-dir=.svn --exclude-dir=.git --exclude='*.[oa]' --exclude='*.so'"
 
 #####################################################################
 
