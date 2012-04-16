@@ -89,4 +89,10 @@ colours=bold yellow
 # tty
 regexp=(\s|^)tty\d+(?=[^\w\d]|$)
 colours=bold cyan
-
+=======
+# mount options
+regexp=no(suid|exec|dev)(?=[,) ])
+colours=bold cyan
+=======
+regexp=noatime(?=[,) ])
+colours=bold yellow

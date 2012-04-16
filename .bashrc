@@ -128,6 +128,8 @@ alias xclipis="tee `tty` | xclip"
 
 alias sgrep="grep -r -n --exclude-dir=.svn --exclude-dir=.git --exclude='*.[oa]' --exclude='*.so'"
 
+alias mnt="mount | cut -d' ' -f 1,3,5,6 | grc column -t"
+
 #####################################################################
 
 # Usefull functions
