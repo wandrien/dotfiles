@@ -22,13 +22,31 @@ fi
 # history settings
 export HISTCONTROL=ignoreboth:erasedups
 export HISTIGNORE=mc:ls:l:ll:la:df:du:bc:cd:su:top:pstree:bg:fg:su
-export HISTSIZE=5000
+export HISTSIZE=8000
 export HISTFILESIZE=$HISTSIZE
 # append to the history file, don't overwrite it
 shopt -s histappend
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+#####################################################################
+
+function dedup {
+	awk '! x[$0]++' $@
+}
+
+function history_cleanup {
+	local HISTFILE_SRC=~/.bash_history
+	local HISTFILE_TMP=~/.bash_history_dedup
+	if [ -f "$HISTFILE_SRC" ]; then
+		cp "$HISTFILE_SRC" "$HISTFILE_SRC.backup" && \
+			(tac < $HISTFILE_SRC | dedup | tac > "$HISTFILE_TMP") && test -s "$HISTFILE_TMP" && \
+			mv "$HISTFILE_TMP" "$HISTFILE_SRC"
+		history -c
+		history -r
+	fi
+}
 
 #####################################################################
 
@@ -126,9 +144,11 @@ alias xclipis="tee `tty` | xclip"
 #alias _fm='exec_first_of -e GUI_FILEMANAGERS'
 #alias _ed='exec_first_of -e GUI_EDITORS'
 
-alias sgrep="grep -r -n --exclude-dir=.svn --exclude-dir=.git --exclude='*.[oa]' --exclude='*.so'"
+alias sgrep="grep --color=auto -r -n --exclude-dir=.svn --exclude-dir=.git --exclude='*.[oa]' --exclude='*.so'"
 
 alias mnt="mount | cut -d' ' -f 1,3,5,6 | grc column -t"
+
+alias yt-dl-1="youtube-dl -o '[%(uploader)s] %(title)s [%(id)s].%(ext)s' --max-quality 35"
 
 #####################################################################
 
@@ -188,7 +208,7 @@ bind '"\eS"':"\"\C-e | xclipis\C-m\""
 
 # Color settings for various tools
 
-export GREP_OPTIONS='--color=auto'
+#export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33'
 
 export LESS='-R'
@@ -262,7 +282,7 @@ function debug_trap
 
 case "${TERM}" in
 	# Работаем с заголовками окон только в соответствующих эмуляторах терминала.
-	xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+	xterm*|rxvt*|Eterm|aterm|kterm|gnome*|screen*)
 		PROMPT_COMMAND='_EXIT_CODE=`format_exit_code $?` ; echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}:${_EXIT_CODE}:${_LAST_BASH_COMMAND}\007"'
 		#export PROMPT_COMMAND
 		trap debug_trap DEBUG

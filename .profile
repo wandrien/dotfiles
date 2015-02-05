@@ -1,7 +1,7 @@
 
 export EDITOR=mcedit
 
-export GUI_TERMINALS='lxterminal -e:terminal:gnome-terminal:terminator:urxvt:xterm -fullscreen'
+export GUI_TERMINALS='lilyterm -e:lxterminal -e:terminal:gnome-terminal:terminator:urxvt:xterm -fullscreen'
 export GUI_EDITORS='medit:adie:gedit:kate:scite'
 export GUI_FILEMANAGERS='pcmanfm:thunar:PathFinder:nautilus:worker'
 export GUI_CALCULATORS='galculator:calculator'
@@ -21,3 +21,9 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+#if [ -d "$HOME/.gem/ruby/2.0.0/bin" ] ; then
+#    PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
+#fi
+
+PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
