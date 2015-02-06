@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Type=Application
+Exec=setxkbmap -model pc104 -layout 'us(basic),ru:2' -option '' -option lv3:ralt_switch,grp:shift_caps_switch,grp_led:caps,compose:menu
+Hidden=false
+Name=setxkbmap
+Comment=
+

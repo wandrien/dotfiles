@@ -3,7 +3,7 @@ export EDITOR=mcedit
 
 export GUI_TERMINALS='lilyterm -e:lxterminal -e:terminal:gnome-terminal:terminator:urxvt:xterm -fullscreen'
 export GUI_EDITORS='medit:adie:gedit:kate:scite'
-export GUI_FILEMANAGERS='pcmanfm:thunar:PathFinder:nautilus:worker'
+export GUI_FILEMANAGERS='stuurman:pcmanfm:thunar:PathFinder:nautilus:worker'
 export GUI_CALCULATORS='galculator:calculator'
 
 __PROFILE_INCLUDED=1
