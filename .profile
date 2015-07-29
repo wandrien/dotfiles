@@ -27,3 +27,8 @@ fi
 #fi
 
 PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+
+if which less &>/dev/null ; then
+	export MANPAGER=less
+	export PAGER=less
+fi

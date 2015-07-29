@@ -19,6 +19,10 @@ fi
 
 #####################################################################
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+#####################################################################
+
 # history settings
 export HISTCONTROL=ignoreboth:erasedups
 export HISTIGNORE=mc:ls:l:ll:la:df:du:bc:cd:su:top:pstree:bg:fg:su
@@ -37,6 +41,7 @@ function dedup {
 }
 
 function history_cleanup {
+	printf "Записей в истории было: %s\n" "`history | wc -l`"
 	local HISTFILE_SRC=~/.bash_history
 	local HISTFILE_TMP=~/.bash_history_dedup
 	if [ -f "$HISTFILE_SRC" ]; then
@@ -46,6 +51,7 @@ function history_cleanup {
 		history -c
 		history -r
 	fi
+	printf "Стало: %s\n" "`history | wc -l`"
 }
 
 #####################################################################
@@ -144,7 +150,7 @@ alias xclipis="tee `tty` | xclip"
 #alias _fm='exec_first_of -e GUI_FILEMANAGERS'
 #alias _ed='exec_first_of -e GUI_EDITORS'
 
-alias sgrep="grep --color=auto -r -n --exclude-dir=.svn --exclude-dir=.git --exclude='*.[oa]' --exclude='*.so'"
+alias sgrep="grep --color=auto -r -n --exclude-dir=.svn --exclude-dir=.git --exclude-dir=.deps --exclude='*.[oa]' --exclude='*.so'"
 
 alias mnt="mount | cut -d' ' -f 1,3,5,6 | grc column -t"
 
@@ -158,6 +164,9 @@ alias yt-dl-1="youtube-dl -o '[%(uploader)s] %(title)s [%(id)s].%(ext)s' --max-q
 c(){ cd "$@" && ls ; }
 # Создаёт каталог и заходит в него
 m(){ mkdir -p "$1" && cd "$1"; }
+
+# Сздаёт путь до файла и сам файл
+mkdir-touch(){ mkdir -p "`dirname "$1"`" && touch "$1" ; }
 
 # Подсвечивает паттерн в содержимом файла
 function h
