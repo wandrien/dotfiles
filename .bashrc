@@ -144,7 +144,7 @@ WHITE=1;37
 NOCOLOR=0'
 
 eval "$(echo "$COLORS" | grep '.' | sed -e 's/^/COLOR_/' -e 's/=\(.*\)$/='\''\1'\''/')"
-eval "$(echo "$COLORS" | grep '.' | sed -e 's/^/export PS_COLOR_/' -e 's/=\(.*\)$/='\''\\[\\033[\1m\\]'\''/')"
+eval "$(echo "$COLORS" | grep '.' | sed -e 's/^/export PS_COLOR_/' -e 's/=\(.*\)$/='\''\\[\\e[\1m\\]'\''/')"
 eval "$(echo "$COLORS" | grep '.' | sed -e 's/^/export CODE_COLOR_/' -e 's/=\(.*\)$/='\''\\033[\1m'\''/')"
 
 unset COLORS
