@@ -121,34 +121,37 @@ fi
 #####################################################################
 
 # Коды для установки цвета фона.
-COLOR_BLACK='0;30'
-COLOR_BLUE='0;34'
-COLOR_GREEN='0;32'
-COLOR_CYAN='0;36'
-COLOR_RED='0;31'
-COLOR_PURPLE='0;35'
-COLOR_BROWN='0;33'
-COLOR_LIGHTGRAY='0;37'
-COLOR_DARKGRAY='1;30'
-COLOR_LIGHTBLUE='1;34'
-COLOR_LIGHTGREEN='1;32'
-COLOR_LIGHTCYAN='1;36'
-COLOR_LIGHTRED='1;31'
-COLOR_LIGHTPURPLE='1;35'
-COLOR_YELLOW='1;33'
-COLOR_WHITE='1;37'
-COLOR_NOCOLOR='0'
 
-
-# Формируем коды для переключения цвета в двух вариантах: для подстановки в приглашение PS1 и для подстановки в обычный echo.
 if [[ -z "$__COLORS_EXPORTED" ]] ; then
-	for i in ${!COLOR_*} ; do
-		export PS_$i="\[\033[${!i}m\]"
-		export CODE_$i="\033[${!i}m"
-	done
-	__COLORS_EXPORTED=1
-fi
 
+COLORS='
+BLACK=0;30
+BLUE=0;34
+GREEN=0;32
+CYAN=0;36
+RED=0;31
+PURPLE=0;35
+BROWN=0;33
+LIGHTGRAY=0;37
+DARKGRAY=1;30
+LIGHTBLUE=1;34
+LIGHTGREEN=1;32
+LIGHTCYAN=1;36
+LIGHTRED=1;31
+LIGHTPURPLE=1;35
+YELLOW=1;33
+WHITE=1;37
+NOCOLOR=0'
+
+eval "$(echo "$COLORS" | grep '.' | sed -e 's/^/COLOR_/' -e 's/=\(.*\)$/='\''\1'\''/')"
+eval "$(echo "$COLORS" | grep '.' | sed -e 's/^/export PS_COLOR_/' -e 's/=\(.*\)$/='\''\\[\\033[\1m\\]'\''/')"
+eval "$(echo "$COLORS" | grep '.' | sed -e 's/^/export CODE_COLOR_/' -e 's/=\(.*\)$/='\''\\033[\1m'\''/')"
+
+unset COLORS
+
+__COLORS_EXPORTED=1
+
+fi
 
 # Раскрашиваем приглашение.
 PS1="\
