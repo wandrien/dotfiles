@@ -45,3 +45,10 @@ if [[ -z "$__BASHRC_INCLUDED" ]] ; then
 	fi
 fi
 
+if [[ -n "$KSH_VERSION" ]] ; then
+	if [[ -f "$HOME/.kshrc" ]] ; then
+		export ENV="$HOME/.kshrc"
+	elif [[ -f /etc/ksh.kshrc ]] ; then
+		export ENV=/etc/ksh.kshrc
+	fi
+fi
