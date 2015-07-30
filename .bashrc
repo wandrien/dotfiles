@@ -2,15 +2,12 @@
 # If not running interactively, don't do anything
 [[ -z "$PS1" ]] && return
 
-if [[ -f /etc/bash.bashrc ]] ; then
-	. /etc/bash.bashrc
-fi
-
 #####################################################################
+
+# Force .profile to be processed
 
 __BASHRC_INCLUDED=1
 
-# include ~/.profile
 if [[ -z "$__PROFILE_INCLUDED" ]] ; then
 	if [[ -f ~/.profile ]] ; then
 		. ~/.profile
@@ -19,32 +16,86 @@ fi
 
 #####################################################################
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# Include system-wide defaults
+
+if [[ -n "$BASH_VERSION" ]] ; then
+	if [[ -f /etc/bash.bashrc ]] ; then
+		. /etc/bash.bashrc
+	fi
+	# enable programmable completion features, if it not yet enabled by /etc/bash.bashrc
+	if [[ -z "$BASH_COMPLETION" && -f /etc/bash_completion ]] ; then
+		. /etc/bash_completion
+	fi
+fi
+
+if [[ -n "$KSH_VERSION" ]] ; then
+	if [[ -f /etc/ksh.kshrc ]] ; then
+		. /etc/ksh.kshrc
+	fi
+fi
 
 #####################################################################
 
-# history settings
-export HISTCONTROL=ignoreboth:erasedups
-export HISTIGNORE=mc:ls:l:ll:la:df:du:bc:cd:su:top:pstree:bg:fg:su
-export HISTSIZE=8000
-export HISTFILESIZE=$HISTSIZE
-# append to the history file, don't overwrite it
-shopt -s histappend
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+# Set up rvm environment
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 #####################################################################
+
+# Useful functions
 
 function dedup {
 	awk '! x[$0]++' $@
 }
 
+# Заходит в каталог и выводит его содержимое
+c(){ cd "$@" && ls ; }
+
+# Создаёт каталог и заходит в него
+m(){ mkdir -p "$1" && cd "$1"; }
+
+# Создаёт путь до файла и сам файл
+mkdir-touch(){ mkdir -p "`dirname "$1"`" && touch "$1" ; }
+
+# Подсвечивает паттерн в содержимом файла
+function h
+{
+	local COLORON="`echo -e $CODE_COLOR_YELLOW`"
+	local COLOROFF="`echo -e $CODE_COLOR_NOCOLOR`"
+
+	if [[ -z "$1" ]] ; then
+		echo "Usage: h 'regex' [file1 file2 ...]" 1>&2;
+		return 1
+	fi
+
+	REGEX="$1"
+	shift
+
+	sed -e "s/${REGEX}/${COLORON}&${COLOROFF}/g" "$@"
+}
+
+#####################################################################
+
+# History Settings
+
+if [[ -n "$BASH_VERSION" ]] ; then
+	export HISTFILE=~/.bash_history
+	export HISTCONTROL=ignoreboth:erasedups
+	export HISTIGNORE=mc:ls:l:ll:la:df:du:bc:cd:su:top:pstree:bg:fg:su
+	export HISTSIZE=8000
+	export HISTFILESIZE=$HISTSIZE
+	# append to the history file, don't overwrite it
+	shopt -s histappend
+else
+	export HISTFILE=~/.sh_history
+	export HISTSIZE=8000
+fi
+
 function history_cleanup {
 	printf "Записей в истории было: %s\n" "`history | wc -l`"
-	local HISTFILE_SRC=~/.bash_history
-	local HISTFILE_TMP=~/.bash_history_dedup
-	if [ -f "$HISTFILE_SRC" ]; then
+	local HISTFILE_SRC="${HISTFILE}"
+	local HISTFILE_TMP="${HISTFILE}_dedup"
+	if [[ -f "$HISTFILE_SRC" ]] ; then
 		cp "$HISTFILE_SRC" "$HISTFILE_SRC.backup" && \
 			(tac < $HISTFILE_SRC | dedup | tac > "$HISTFILE_TMP") && test -s "$HISTFILE_TMP" && \
 			mv "$HISTFILE_TMP" "$HISTFILE_SRC"
@@ -56,14 +107,16 @@ function history_cleanup {
 
 #####################################################################
 
+if [[ -n "$BASH_VERSION" ]] ; then
+	# check the window size after each command and, if necessary,
+	# update the values of LINES and COLUMNS.
+	shopt -s checkwinsize
+fi
+
+#####################################################################
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x "`which lesspipe.sh 2>/dev/null`" ] && eval "$(SHELL=/bin/sh lesspipe.sh)"
-
-
-# enable programmable completion features, if it not yet enabled by /etc/bash.bashrc
-if [[ -z "$BASH_COMPLETION" && -f /etc/bash_completion ]] ; then
-	. /etc/bash_completion
-fi
 
 #####################################################################
 
@@ -117,7 +170,7 @@ $PS_COLOR_NOCOLOR\$ \
 #fi
 
 # enable color support of ls and also add handy aliases
-if [[ -x `which dircolors` ]] ; then
+if [[ -x "`which dircolors 2>/dev/null`" ]] ; then
 	eval "`dircolors -b`"
 	alias ls='ls --color=auto'
 	#alias dir='dir --color=auto'
@@ -155,35 +208,6 @@ alias sgrep="grep --color=auto -r -n --exclude-dir=.svn --exclude-dir=.git --exc
 alias mnt="mount | cut -d' ' -f 1,3,5,6 | grc column -t"
 
 alias yt-dl-1="youtube-dl -o '[%(uploader)s] %(title)s [%(id)s].%(ext)s' --max-quality 35"
-
-#####################################################################
-
-# Usefull functions
-
-# Заходит в каталог и выводит его содержимое
-c(){ cd "$@" && ls ; }
-# Создаёт каталог и заходит в него
-m(){ mkdir -p "$1" && cd "$1"; }
-
-# Сздаёт путь до файла и сам файл
-mkdir-touch(){ mkdir -p "`dirname "$1"`" && touch "$1" ; }
-
-# Подсвечивает паттерн в содержимом файла
-function h
-{
-	local COLORON="`echo -e $CODE_COLOR_YELLOW`"
-	local COLOROFF="`echo -e $CODE_COLOR_NOCOLOR`"
-
-	if [[ -z "$1" ]] ; then
-		echo "Usage: h 'regex' [file1 file2 ...]" 1>&2;
-		return 1
-	fi
-
-	REGEX="$1"
-	shift
-
-	sed -e "s/${REGEX}/${COLORON}&${COLOROFF}/g" "$@"
-}
 
 #####################################################################
 
