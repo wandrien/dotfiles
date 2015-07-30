@@ -1,10 +1,38 @@
+_add_path()
+{
+	if [ -d "$1" ] ; then
+		PATH="$1:$PATH"
+	fi
+	export PATH
+}
 
-export EDITOR=mcedit
+_add_path /usr/games
+_add_path "$HOME/bin"
+_add_path "$HOME/.rvm/bin"
+
+export PATH HOME TERM
+
+###########################################################################
+
+_select_app()
+{
+	if which "$2" >/dev/null 2>/dev/null ; then
+		export "$1"="$2"
+	fi
+}
+
+_select_app EDITOR   mcedit
+_select_app MANPAGER less
+_select_app PAGER    less
+
+###########################################################################
 
 export GUI_TERMINALS='lilyterm -e:lxterminal -e:terminal:gnome-terminal:terminator:urxvt:xterm -fullscreen'
 export GUI_EDITORS='medit:adie:gedit:kate:scite'
 export GUI_FILEMANAGERS='stuurman:pcmanfm:thunar:PathFinder:nautilus:worker'
 export GUI_CALCULATORS='galculator:calculator'
+
+###########################################################################
 
 __PROFILE_INCLUDED=1
 
@@ -17,18 +45,3 @@ if [[ -z "$__BASHRC_INCLUDED" ]] ; then
 	fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-#if [ -d "$HOME/.gem/ruby/2.0.0/bin" ] ; then
-#    PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
-#fi
-
-PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
-
-if which less &>/dev/null ; then
-	export MANPAGER=less
-	export PAGER=less
-fi
