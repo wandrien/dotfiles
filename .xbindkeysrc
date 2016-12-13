@@ -53,9 +53,13 @@
 "firefox -ProfileManager --no-remote"
   Mod4 + u
 
+# PaleMoon
+"palemoon -ProfileManager --no-remote"
+  Mod4 + p
+
 # Opera
-"/usr/local/bin/opera"
-  Mod4 + o
+#"/usr/local/bin/opera"
+#  Mod4 + o
 
 # Edit web links
 "exec_first_of -e GUI_EDITORS '/media/work/home/vadim/files/Каталог ссылок/index.html'"
@@ -70,11 +74,11 @@
   Mod4 + grave
 
 # 
-"lxpanelxctl menu"
+"waterlinectl menu"
   Mod4 + z
 
 # 
-"lxpanelxctl run"
+"waterlinectl run"
   Mod4 + x
 
 # 

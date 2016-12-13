@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=
-Exec=/media/stuff/vadim/bin/wpchg_random
+Exec=/media/stuff/vadim/home-common/.bin/wpchg_random
 Hidden=false
-Name=/media/stuff/vadim/bin/wpchg_random
+Name=/media/stuff/vadim/home-common/.bin/wpchg_random
 Type=Application

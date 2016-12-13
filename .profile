@@ -7,7 +7,8 @@ _add_path()
 }
 
 _add_path /usr/games
-_add_path "$HOME/bin"
+_add_path "$HOME/.bin"
+_add_path "$HOME/../Моё/Программирование/tt"
 _add_path "$HOME/.rvm/bin"
 
 export PATH HOME TERM
