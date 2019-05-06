@@ -114,7 +114,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>8</number>
+    <number>10</number>
     <firstdesk>1</firstdesk>
     <names>
       <!-- set names up here if you want to, like this:
@@ -129,8 +129,8 @@
       <name>ζ</name>
       <name>η</name>
       <name>θ</name>
-      <!--name>ι</name>
-    <name>κ</name-->
+      <name>ι</name>
+      <name>κ</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -271,6 +271,16 @@
         <desktop>8</desktop>
       </action>
     </keybind>
+    <keybind key="W-F9">
+      <action name="Desktop">
+        <desktop>9</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F10">
+      <action name="Desktop">
+        <desktop>10</desktop>
+      </action>
+    </keybind>
     <keybind key="W-S-F1">
       <action name="SendToDesktop">
         <desktop>1</desktop>
@@ -316,6 +326,18 @@
     <keybind key="W-S-F8">
       <action name="SendToDesktop">
         <desktop>8</desktop>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-F9">
+      <action name="SendToDesktop">
+        <desktop>9</desktop>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-F10">
+      <action name="SendToDesktop">
+        <desktop>10</desktop>
         <follow>no</follow>
       </action>
     </keybind>
@@ -837,7 +859,7 @@
       <decor>no</decor>
     </application-->
     <application class="Terminator" role="logs">
-      <desktop>8</desktop>
+      <desktop>10</desktop>
       <maximized>true</maximized>
     </application>
     <application class="Chromium">

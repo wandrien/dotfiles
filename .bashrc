@@ -206,14 +206,14 @@ alias xclipis="tee `tty` | xclip"
 #alias _fm='exec_first_of -e GUI_FILEMANAGERS'
 #alias _ed='exec_first_of -e GUI_EDITORS'
 
-alias sgrep="grep --color=auto -r -n --exclude-dir=.svn --exclude-dir=.git --exclude-dir=.deps --exclude='*.[oa]' --exclude='*.so' --exclude-dir=autom4te.cache --exclude=aclocal.m4 --exclude=config.sub --exclude=ltmain.sh"
+alias sgrep="grep --color=auto -r -n --exclude-dir=.svn --exclude-dir=.git --exclude-dir=.deps --exclude='*.[oa]' --exclude='*.so' --exclude='*.xz' --exclude-dir=autom4te.cache --exclude=aclocal.m4 --exclude=config.sub --exclude=ltmain.sh --exclude=.intltool-merge-cache"
 
 alias sgrep-fixme="sgrep --exclude=configure --exclude=libtool --exclude=depcomp --exclude=config.status --exclude=Makefile.in -E 'FIXME|TODO|XXX'"
 
 
 alias mnt="mount | cut -d' ' -f 1,3,5,6 | grc column -t"
 
-alias yt-dl-1="youtube-dl -o '[%(uploader)s] %(title)s [%(id)s].%(ext)s' --max-quality 35"
+alias yt-dl-720="youtube-dl -o '%(title)s [%(id)s].%(ext)s' -f 'best[height<=720]'"
 
 alias fixterm='stty sane; tput rs1; echo -e "\033c"'
 

@@ -50,7 +50,7 @@
   Mod4 + y
 
 # Firefox
-"firefox -ProfileManager --no-remote"
+"firefox -ProfileManager --new-instance"
   Mod4 + u
 
 # PaleMoon
@@ -76,6 +76,10 @@
 # 
 "waterlinectl menu"
   Mod4 + z
+
+# Lock Screen	
+"xscreensaver-command -lock"
+  Mod4 + l
 
 # 
 "waterlinectl run"
