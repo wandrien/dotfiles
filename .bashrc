@@ -44,20 +44,21 @@ fi
 
 # Useful functions
 
+# Display unique lines
 function dedup {
 	awk '! x[$0]++' $@
 }
 
-# Заходит в каталог и выводит его содержимое
+# Enter directory and display the listing
 c(){ cd "$@" && ls ; }
 
-# Создаёт каталог и заходит в него
+# Create directory and enter it
 m(){ mkdir -p "$1" && cd "$1"; }
 
-# Создаёт путь до файла и сам файл
+# Create file with full path
 mkdir-touch(){ mkdir -p "`dirname "$1"`" && touch "$1" ; }
 
-# Подсвечивает паттерн в содержимом файла
+# Highligh pattern
 function h
 {
 	local COLORON="`echo -e $CODE_COLOR_YELLOW`"
