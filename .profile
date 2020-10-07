@@ -29,7 +29,7 @@ _select_app PAGER    less
 ###########################################################################
 
 export GUI_TERMINALS='lilyterm -e:lxterminal -e:terminal:gnome-terminal:terminator:urxvt:xterm -fullscreen'
-export GUI_EDITORS='medit:adie:gedit:kate:scite'
+export GUI_EDITORS='qk:medit:adie:gedit:kate:scite'
 export GUI_FILEMANAGERS='stuurman:pcmanfm:thunar:PathFinder:nautilus:worker'
 export GUI_CALCULATORS='galculator:calculator'
 

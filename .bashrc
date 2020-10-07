@@ -213,7 +213,11 @@ alias sgrep-fixme="sgrep --exclude=configure --exclude=libtool --exclude=depcomp
 
 alias mnt="mount | cut -d' ' -f 1,3,5,6 | grc column -t"
 
-alias yt-dl-720="youtube-dl -o '%(title)s [%(id)s].%(ext)s' -f 'best[height<=720]'"
+alias yt-dl-720-s="youtube-dl -o '%(title)s [%(id)s].%(ext)s' -f 'best[height<=720]'"
+alias yt-dl-720="youtube-dl -o '%(title)s [%(id)s].%(ext)s' -f 'bestvideo[height<=720]+bestaudio/best[height<=720]'"
+alias yt-dl-1080="youtube-dl -o '%(title)s [%(id)s].%(ext)s' -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'"
+alias yt-dl-720-no-id="youtube-dl -o '%(title)s.%(ext)s' -f 'bestvideo[height<=720]+bestaudio/best[height<=720]'"
+alias yt-dl-1080-no-id="youtube-dl -o '%(title)s.%(ext)s' -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'"
 
 alias fixterm='stty sane; tput rs1; echo -e "\033c"'
 
@@ -244,6 +248,8 @@ bind '"\ea"':"\"xclipoc | \""
 bind '"\es"':"\"xclipos | \""
 bind '"\eA"':"\"\C-e | xclipic\C-m\""
 bind '"\eS"':"\"\C-e | xclipis\C-m\""
+
+bind '"\ey"':"\" yt-dl-720 \""
 
 #####################################################################
 

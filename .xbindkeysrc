@@ -49,88 +49,81 @@
 "exec_first_of -e GUI_CALCULATORS"
   Mod4 + y
 
-# Firefox
 "firefox -ProfileManager --new-instance"
   Mod4 + u
 
-# PaleMoon
 "palemoon -ProfileManager --no-remote"
   Mod4 + p
 
-# Opera
-#"/usr/local/bin/opera"
-#  Mod4 + o
-
 # Edit web links
-"exec_first_of -e GUI_EDITORS '/media/work/home/vadim/files/Каталог ссылок/index.html'"
-  Mod4 + shift + w
+#"exec_first_of -e GUI_EDITORS '/media/work/home/vadim/files/Каталог ссылок/index.html'"
+#  Mod4 + shift + w
 
-# dmenu_run
 "dmenu_run -p '> ' -fn 'Droid Sans Mono-14'"
   Mod4 + r
 
 # 
-"WM_CLASS_BLACKLIST=lxpanelx bash ~/dmenu_winlist -S -R -fn 'Droid Sans Mono-14' -i -f -l 50"
+"WM_CLASS_BLACKLIST=waterline bash ~/.bin/dmenu_winlist -S -R -fn 'Droid Sans Mono-14' -i -f -l 50"
   Mod4 + grave
-
-# 
-"waterlinectl menu"
-  Mod4 + z
 
 # Lock Screen	
 "xscreensaver-command -lock"
   Mod4 + l
 
 # 
+"waterlinectl menu"
+  Mod4 + z
+
+# 
 "waterlinectl run"
   Mod4 + x
 
 # 
-"lxpanelxctl panel bottom plugin taskbar prevwindow"
+"waterlinectl panel bottom plugin taskbar prevwindow"
   Mod4 + Left
 
 # 
-"lxpanelxctl panel bottom plugin taskbar nextwindow"
+"waterlinectl panel bottom plugin taskbar nextwindow"
   Mod4 + Right
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 0"
+"waterlinectl panel bottom plugin taskbar position 0"
   Mod4 + 1
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 1"
+"waterlinectl panel bottom plugin taskbar position 1"
   Mod4 + 2
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 2"
+"waterlinectl panel bottom plugin taskbar position 2"
   Mod4 + 3
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 3"
+"waterlinectl panel bottom plugin taskbar position 3"
   Mod4 + 4
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 4"
+"waterlinectl panel bottom plugin taskbar position 4"
   Mod4 + 5
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 5"
+"waterlinectl panel bottom plugin taskbar position 5"
   Mod4 + 6
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 6"
+"waterlinectl panel bottom plugin taskbar position 6"
   Mod4 + 7
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 7"
+"waterlinectl panel bottom plugin taskbar position 7"
   Mod4 + 8
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 8"
+"waterlinectl panel bottom plugin taskbar position 8"
   Mod4 + 9
 
 # 
-"lxpanelxctl panel bottom plugin taskbar position 9"
+"waterlinectl panel bottom plugin taskbar position 9"
   Mod4 + 0
 
 "xbacklight -steps 1 -dec 10"
