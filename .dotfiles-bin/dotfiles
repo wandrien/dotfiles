@@ -103,7 +103,7 @@ relpath()
     local common_part="$source" # for now
     local result="" # for now
 
-    while [ "${target#$common_part}" = "${target}" ] ; do
+    while [ x"${target#$common_part}" = x"${target}" ] ; do
         # no match, means that candidate common part is not correct
         # go up one level (reduce common part)
         common_part="$(dirname "$common_part")"
@@ -115,7 +115,7 @@ relpath()
         fi
     done
 
-    if [ "$common_part" == "/" ] ; then
+    if [ x"$common_part" = x"/" ] ; then
         # special case for root (no common path)
         result="$result/"
     fi
