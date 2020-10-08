@@ -250,7 +250,7 @@ get_status()
 # installation is run, if DO_INSTALL is of non-zero lenght
 status_and_install()
 {
-    (cd "$DOTFILES_PATH/" && find . -type f -not -path "./.git/*" -print) | \
+    (cd "$DOTFILES_PATH/" && find . -type f) | \
     (
         any_files_processed=''
 
@@ -263,6 +263,12 @@ status_and_install()
 
             src_filename="$DOTFILES_PATH/$filename"
             dest_filename="$DOTFILES_DEST_PATH/$filename"
+
+            case "$filename" in
+            .git/*)
+                continue
+                ;;
+            esac
 
             if test -z "$filename" ; then
                 continue
