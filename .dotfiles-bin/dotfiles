@@ -129,7 +129,7 @@ relpath()
         result="$result$forward_part"
     elif [ -n "$forward_part" ] ; then
         # extra slash removal
-        result="${forward_part:1}"
+        result="${forward_part#/}"
     fi
 
     echo "$result"
