@@ -1,0 +1,61 @@
+*TkTheme: clearlooks
+
+URxvt.saveLines: 10000
+
+URxvt.cursorBlink: True
+
+URxvt.pointerBlank: True
+URxvt.pointerBlankDelay: 5
+
+URxvt.scrollTtyOutput: False
+URxvt.scrollWithBuffer: False
+URxvt.scrollTtyKeypress: True
+
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:style=Book
+!URxvt.font: xft:DejaVu Sans Mono:size=10:style=Book
+
+URxvt.scrollBar_right: True
+
+URxvt.foreground: #aaaaaa
+URxvt.background: #000000
+
+
+
+XTerm*vt100.foreground: #aaaaaa
+XTerm*vt100.background: #000000
+
+XTerm*faceName:DejaVu Sans Mono
+XTerm*faceSize:10
+
+! black
+*color0: #000000
+! red
+*color1: #aa0000
+! green
+*color2: #00aa00
+! yellow
+*color3: #aa5500
+! blue
+*color4: #0000aa
+! magenta
+*color5: #aa00aa
+! cyan
+*color6: #00aaaa
+! white
+*color7: #aaaaaa
+! bright black
+*color8: #555555
+! bright red
+*color9: #ff5555
+! bright green
+*color10: #55ff55
+! bright yellow
+*color11: #ffff55
+! bright blue
+*color12: #5555ff
+! bright magenta
+*color13: #ff55ff
+! bright cyan
+*color14: #55ffff
+! bright white
+*color15: #ffffff
