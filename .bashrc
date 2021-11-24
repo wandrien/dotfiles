@@ -302,6 +302,14 @@ fi
 
 #####################################################################
 
+list_signals() {
+	# Writing sed 's/something/\n/' is not portable.
+	# The new line character should be escaped with the backward slash.
+	local nl='
+'
+	kill -l | sed -e 's|) |:|g' -e 's|\s|\'"$nl"'|g' -e 's|SIG||g' | egrep '[0-9]' | sed 's|:|\'"$nl"'|'
+}
+
 # Формируем массив с соответствиями кодов возврата и сигналов.
 # Коды возврата при завершении программы сигналом равны 128 + номер сигнала. Номера сигналов берём из kill -l.
 declare -A SIGCODES
@@ -309,7 +317,7 @@ while read code ; do
 	read value
 	code=`expr 128 + $code`
 	SIGCODES[${code}]="[${value}]"
-done < <( kill -l | sed -e 's|) |:|g' -e 's|\s|\n|g' -e 's|SIG||g' | egrep '[0-9]' | sed 's|:|\n|' )
+done < <( list_signals )
 
 # Функция формирует выхлоп код + сигнал.
 function format_exit_code
