@@ -42,6 +42,15 @@ fi
 
 #####################################################################
 
+# Set up pyenv environment
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+#####################################################################
+
 # Useful functions
 
 # Display unique lines
@@ -83,13 +92,13 @@ if [[ -n "$BASH_VERSION" ]] ; then
 	export HISTFILE=~/.bash_history
 	export HISTCONTROL=ignoreboth:erasedups
 	export HISTIGNORE=mc:ls:l:ll:la:df:du:bc:cd:su:top:pstree:bg:fg:su
-	export HISTSIZE=9000
+	export HISTSIZE=15000
 	export HISTFILESIZE=$HISTSIZE
 	# append to the history file, don't overwrite it
 	shopt -s histappend
 else
 	export HISTFILE=~/.sh_history
-	export HISTSIZE=9000
+	export HISTSIZE=15000
 fi
 
 function history_cleanup {
