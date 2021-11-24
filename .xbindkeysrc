@@ -43,6 +43,9 @@
 "exec_first_of -e GUI_EDITORS"
   Mod4 + w
 
+"open-selection"
+  Mod4 + shift + w
+
 "exec_first_of -e GUI_FILEMANAGERS"
   Mod4 + e
 
@@ -144,8 +147,11 @@
 "if rfkill list | grep -q 'blocked: yes' ; then rfkill unblock all ; else rfkill block all ; fi"
   XF86WLAN
 
-"sleep 1 && scrot -s"
+"sleep 1 && scrot -s -b"
   Mod4 + Shift + F12
+
+"sleep 1 && scrot -u -b"
+  Mod4 + Alt + F12
 
 "scrot"
   Mod4 + F12
