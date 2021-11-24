@@ -1,4 +1,10 @@
+
+set show-all-if-ambiguous on
+set bind-tty-special-chars off
+set bell-style none
+set enable-bracketed-paste on
+set colored-stats on
+
 "\e[A": history-search-backward
 "\e[B": history-search-forward
-
-set bell-style none
+"\C-w": unix-filename-rubout
