@@ -19,13 +19,31 @@ URxvt.scrollBar_right: True
 URxvt.foreground: #aaaaaa
 URxvt.background: #000000
 
+URxvt*iso14755: False
+URxvt*iso14755_52: False
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Shift-Control-Insert: eval:paste_clipboard
+URxvt.keysym.Shift-Control-Delete: eval:selection_to_clipboard
 
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+URxvt.keysym.Shift-Insert: string:\033[2~
+
+XTerm.termName: xterm-256color
 
 XTerm*vt100.foreground: #aaaaaa
 XTerm*vt100.background: #000000
 
 XTerm*faceName:DejaVu Sans Mono
 XTerm*faceSize:10
+
+XTerm.vt100.translations: #override \n\
+    Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD) \n\
+    Ctrl Shift <KeyPress> Delete: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <KeyPress> Insert: insert-selection(CLIPBOARD) \n\
+    Shift <KeyPress> Insert: insert() \n\
 
 ! black
 *color0: #000000
