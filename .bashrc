@@ -307,7 +307,7 @@ list_signals() {
 	# The new line character should be escaped with the backward slash.
 	local nl='
 '
-	kill -l | sed -e 's|) |:|g' -e 's|\s|\'"$nl"'|g' -e 's|SIG||g' | egrep '[0-9]' | sed 's|:|\'"$nl"'|'
+	kill -l | sed -e 's|) |:|g' -e 's|[[:space:]][[:space:]]*|\'"$nl"'|g' -e 's|SIG||g' | egrep '[0-9]' | sed 's|:|\'"$nl"'|'
 }
 
 # Формируем массив с соответствиями кодов возврата и сигналов.
