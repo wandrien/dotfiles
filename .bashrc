@@ -225,6 +225,10 @@ alias sgrep-fixme="sgrep --exclude=configure --exclude=libtool --exclude=depcomp
 
 alias mnt="mount | cut -d' ' -f 1,3,5,6 | grc column -t"
 
+if [[ -x "`which yt-dlp 2>/dev/null`" ]] ; then
+	alias youtube-dl=yt-dlp
+fi
+
 alias yt-dl-720-s="youtube-dl -o '%(title)s [%(id)s].%(ext)s' -f 'best[height<=720]'"
 alias yt-dl-720="youtube-dl -o '%(title)s [%(id)s].%(ext)s' -f 'bestvideo[height<=720]+bestaudio/best[height<=720]'"
 alias yt-dl-1080="youtube-dl -o '%(title)s [%(id)s].%(ext)s' -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'"
