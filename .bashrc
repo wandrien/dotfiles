@@ -184,6 +184,10 @@ $PS_COLOR_NOCOLOR\$ \
 #	. ~/.bash_aliases
 #fi
 
+# make grep 3.8 happy
+egrep() { grep -E "$@" ; }
+fgrep() { grep -F "$@" ; }
+
 # enable color support of ls and also add handy aliases
 if [[ -x "`which dircolors 2>/dev/null`" ]] ; then
 	eval "`dircolors -b`"
