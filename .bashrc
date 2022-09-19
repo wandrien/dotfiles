@@ -185,8 +185,8 @@ $PS_COLOR_NOCOLOR\$ \
 #fi
 
 # make grep 3.8 happy
-egrep() { grep -E "$@" ; }
-fgrep() { grep -F "$@" ; }
+function egrep { grep -E "$@" ; }
+function fgrep { grep -F "$@" ; }
 
 # enable color support of ls and also add handy aliases
 if [[ -x "`which dircolors 2>/dev/null`" ]] ; then
