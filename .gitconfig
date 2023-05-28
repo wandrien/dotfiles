@@ -2,6 +2,21 @@
 	autocrlf = input
 [user]
 	name = Vadim Ushakov
-	email = igeekless@gmail.com
+	email = wandrien.dev@gmail.com
 [color]
 	ui = auto
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 957x804+0+0
+	main-window-view = FileView
+	show-graph = true
+	history-view-vpane-position = 515
+	file-view-vpane-position = 633
+	file-view-hpane-position = 242
+[init]
+	defaultBranch = main
