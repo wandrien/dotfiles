@@ -222,9 +222,32 @@ alias xclipis="tee `tty` | xclip"
 #alias _fm='exec_first_of -e GUI_FILEMANAGERS'
 #alias _ed='exec_first_of -e GUI_EDITORS'
 
-alias sgrep="grep --color=auto -r -n --exclude-dir=.svn --exclude-dir=.git --exclude-dir=.deps --exclude='*.[oa]' --exclude='*.so' --exclude='*.xz' --exclude-dir=autom4te.cache --exclude=aclocal.m4 --exclude=config.sub --exclude=ltmain.sh --exclude=.intltool-merge-cache"
+alias sgrep="grep \
+  --color=auto \
+  -r -n \
+  --exclude-dir=.svn \
+  --exclude-dir=.git \
+  --exclude-dir=.deps \
+  --exclude-dir=build-aux \
+  --exclude-dir=m4 \
+  --exclude-dir=*-obj \
+  --exclude='*.[oa]' \
+  --exclude='*.so' \
+  --exclude='*.xz' \
+  --exclude='*~' \
+  --exclude-dir=autom4te.cache \
+  --exclude=aclocal.m4 \
+  --exclude=config.sub \
+  --exclude=ltmain.sh \
+  --exclude=.intltool-merge-cache"
 
-alias sgrep-fixme="sgrep --exclude=configure --exclude=libtool --exclude=depcomp --exclude=config.status --exclude=Makefile.in -E 'FIXME|TODO|XXX'"
+alias sgrep-fixme="sgrep \
+  --exclude=configure \
+  --exclude=libtool \
+  --exclude=depcomp \
+  --exclude=config.status \
+  --exclude=Makefile.in \
+  -E 'FIXME|TODO|XXX'"
 
 
 alias mnt="mount | cut -d' ' -f 1,3,5,6 | grc column -t"
